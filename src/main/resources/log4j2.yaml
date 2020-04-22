@@ -1,0 +1,20 @@
+Configuration:
+  name: Default
+  properties:
+    property:
+      name: log-path
+      value: "logs"
+
+  appenders:
+    Console:
+      name: Console_Appender
+      PatternLayout:
+        Pattern: "%highlight{%msg} %xEx{short}%n"
+
+  Loggers:
+
+    Root:
+      level: all
+      AppenderRef:
+        - ref: Console_Appender
+          level: all
