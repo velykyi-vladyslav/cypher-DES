@@ -6,31 +6,49 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputMessage {
-    Scanner input;
-    byte[] plainText;
+    private byte[] plainText;
     private List<String> msgBlocks;
     private List<String> msgLeftParts;
     private List<String> msgRigthParts;
-
-    BitsOperations bitsOp;
+    private Scanner input;
+    private BitsOperations bitsOp;
 
     public InputMessage() throws UnsupportedEncodingException {
         input = new Scanner(System.in);
-        plainText = input.nextLine().getBytes("UTF-8");
+        plainText = input.nextLine().getBytes("UTF-8");//Input msg
         msgBlocks = new ArrayList<>();
-        msgLeftParts = new ArrayList<>();
-        msgRigthParts = new ArrayList<>();
         bitsOp = new BitsOperations(plainText);
+        setMsgBitsBlocks();
+        splitIntoParts();
     }
 
-    public void setMsgBitsBlocks() {
+    private void setMsgBitsBlocks() {
         bitsOp.fillMsgBlocks(msgBlocks);
     }
-    public void splitIntoParts(){
+
+    private void splitIntoParts(){
+        msgLeftParts = new ArrayList<>();
+        msgRigthParts = new ArrayList<>();
         for (String e: msgBlocks) {
             msgLeftParts.add(e.substring(0,32));
             msgRigthParts.add(e.substring(32,64));
         }
+    }
+
+    public List<String> getMsgBlocks() {
+        return msgBlocks;
+    }
+
+    public List<String> getMsgLeftParts() {
+        return msgLeftParts;
+    }
+
+    public List<String> getMsgRigthParts() {
+        return msgRigthParts;
+    }
+
+    public byte[] getPlainText() {
+        return plainText;
     }
 
     @Override

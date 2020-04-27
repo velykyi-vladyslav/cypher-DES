@@ -9,15 +9,19 @@ public class BitsOperations implements Operable{
     static final int KEY_OF_GAP = 32;
     private byte[] plainText;
 
+    public BitsOperations() {
+    }
+
     public BitsOperations(byte[] plainText) {
         this.plainText = plainText;
     }
+
+
 
     public void fillMsgBlocks(List<String> msgBlocks) {
         List<String> msgSymbols = new ArrayList<>();
         msgSymbols.addAll(getBitsList());
         String str = "";
-
         for (int i = 0; i < msgSymbols.size(); i++) {
             str = str + msgSymbols.get(i);
             if ((i + 1) % 8 == 0) {
@@ -25,6 +29,26 @@ public class BitsOperations implements Operable{
                 str = "";
             }
         }
+    }
+    public String doPermutation(int[] table, String str){
+        char[]array = str.toCharArray();
+        char[]temp = new char[array.length-8];
+        int i = 0;
+
+        for (int e: table) {
+            temp[i] = array[e-1];
+            i++;
+        }
+        return String.copyValueOf(temp);
+    }
+
+    public List<String> combine(List<String> leftPart, List<String> rightPart){
+        List<String>  combinedList = new ArrayList<>();
+        String combinedString = "";
+        for (int i = 0; i < leftPart.size();i++){
+            combinedList.add(leftPart.get(i) + leftPart.get(i));
+        }
+        return combinedList;
     }
 
 
