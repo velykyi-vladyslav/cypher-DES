@@ -1,4 +1,6 @@
-package epam.com.model;
+package epam.com.model.step1;
+
+import epam.com.model.step1.BitsOperations;
 
 import java.util.*;
 

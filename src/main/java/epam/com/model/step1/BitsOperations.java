@@ -1,10 +1,9 @@
-package epam.com.model;
+package epam.com.model.step1;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BitsOperations implements Operable{
+public class BitsOperations implements Operable {
     static final int COUNT_OF_BLOCKS = 8;
     static final int KEY_OF_GAP = 32;
     private byte[] plainText;
@@ -32,7 +31,7 @@ public class BitsOperations implements Operable{
     }
     public String doPermutation(int[] table, String str){
         char[]array = str.toCharArray();
-        char[]temp = new char[array.length-8];
+        char[]temp = new char[table.length];
         int i = 0;
 
         for (int e: table) {
