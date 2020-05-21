@@ -9,7 +9,7 @@ Configuration:
     Console:
       name: Console_Appender
       PatternLayout:
-        Pattern: "%highlight{%msg} %xEx{short}%n"
+        Pattern: "[%-5level] - %class{1}:%L - %msg %xEx{short}%n"
 
   Loggers:
 
